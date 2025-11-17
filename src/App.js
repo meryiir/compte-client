@@ -1,23 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import CompteForm from './components/CompteForm';
+import CompteList from './components/CompteList';
 
+// Composant principal
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="text-center mt-4 mb-4">Gestion des Comptes</h1>
+      <CompteForm />
+      <CompteList />
     </div>
   );
 }

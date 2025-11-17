@@ -1,3 +1,57 @@
+# Application de Gestion des Comptes
+
+Application React pour gérer des comptes bancaires (frontend).
+
+## ⚠️ IMPORTANT : Configuration du Backend
+
+**Vous n'avez PAS besoin de fusionner ce projet avec votre projet backend.** Les deux projets peuvent rester séparés.
+
+### Pour que l'application fonctionne :
+
+1. **Démarrez votre serveur backend** (projet "banque")
+   - Le serveur doit tourner sur `http://localhost:8082`
+   - Vérifiez que l'endpoint `/api/comptes` est disponible
+
+2. **Configurez CORS sur votre backend** (très important !)
+   
+   Si votre backend est en Spring Boot, ajoutez cette configuration :
+   
+   ```java
+   @CrossOrigin(origins = "http://localhost:3000")
+   ```
+   
+   Ou dans une classe de configuration :
+   ```java
+   @Configuration
+   public class CorsConfig {
+       @Bean
+       public WebMvcConfigurer corsConfigurer() {
+           return new WebMvcConfigurer() {
+               @Override
+               public void addCorsMappings(CorsRegistry registry) {
+                   registry.addMapping("/api/**")
+                           .allowedOrigins("http://localhost:3000")
+                           .allowedMethods("GET", "POST", "PUT", "DELETE");
+               }
+           };
+       }
+   }
+   ```
+
+3. **Vérifiez l'URL dans `src/config.js`**
+   - Par défaut : `http://localhost:8082/api`
+   - Modifiez si votre backend utilise un autre port ou chemin
+
+### Dépannage
+
+Si les comptes ne s'affichent pas :
+- ✅ Vérifiez que le backend est démarré
+- ✅ Vérifiez la console du navigateur (F12) pour voir les erreurs
+- ✅ Vérifiez que CORS est configuré sur le backend
+- ✅ Vérifiez que l'URL dans `config.js` correspond à votre backend
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
